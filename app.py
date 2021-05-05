@@ -16,7 +16,7 @@ def hello():
 
 @app.route('/bot', methods = ['GET','POST'])
 def bot():
-    incoming_msg = request.values.get('Body')
+    incoming_msg = request.values.get('Body', '')
     #print(incoming_msg)
     resp = MessagingResponse()
     msg = resp.message()
