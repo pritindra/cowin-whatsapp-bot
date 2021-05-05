@@ -14,7 +14,7 @@ d = time.strftime("%d-%m-%Y")
 def hello():
     return "Hello World!"
 
-@app.route('/bot', methods = ['POST'])
+@app.route('/bot', methods = ['GET','POST'])
 def bot():
     incoming_msg = request.values.get('Body', '')
     #print(incoming_msg)
