@@ -1,5 +1,5 @@
 # +12525926432
-from flask import Flask,request
+from flask import Flask, request
 import requests
 import json
 from twilio.twiml.messaging_response import MessagingResponse
@@ -32,7 +32,8 @@ def bot():
         r = requests.get('https://cdn-api.co-vin.in/api/v2/admin/location/states')
         if r.status_code == 200:
             data = r.json()
-            text = f'_List of States_ \n\nState id : *{data["state_id"]}* \n\nState name : *{data["state_name"]}* \n\n 👉 Type *B, C, D, E, F, G* to see other options \n 👉 Type *Menu* to view the Main Menu'
+            # text = f'_List of States_ \n\nState id : *{data["state_id"]}* \n\nState name : *{data["state_name"]}* \n\n 👉 Type *B, C, D, E, F, G* to see other options \n 👉 Type *Menu* to view the Main Menu'
+            text = f'{data}'
             print(text)
         else:
             text = 'I could not retrieve the results at this time, sorry.'
@@ -41,7 +42,8 @@ def bot():
 
     if 'C' in incoming_msg:
         # return total cases
-        print('\nEnter your PIN\n')
+        txt = f'Enter your PIN:'
+        msg.body(txt)
         pin_msg = request.values.get('Body', '')
         
         payload = {'pincode':pin_msg, 'date':d}
@@ -54,7 +56,7 @@ def bot():
             text = 'I could not retrieve the results at this time, sorry.'
         msg.body(text)
         responded = True
-        
+
     return str(resp)
 
 if __name__ == "__main__":
