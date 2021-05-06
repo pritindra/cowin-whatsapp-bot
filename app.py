@@ -16,18 +16,18 @@ def hello():
 
 @app.route('/bot', methods = ['GET','POST'])
 def bot():
-    incoming_msg = request.values.get('Body', '')
+    incoming_msg = request.values.get('Body', '').lower()
     #print(incoming_msg)
     resp = MessagingResponse()
     msg = resp.message()
     responded = False
 
-    if 'Hi' in incoming_msg or 'Hey' in incoming_msg or 'Heya' in incoming_msg or 'Menu' in incoming_msg:
+    if 'hi' in incoming_msg or 'hey' in incoming_msg or 'heya' in incoming_msg or 'menu' in incoming_msg:
         text = f'Hello Fella!, \nThis is a Covid-Bot developed by Pritindra Das to provide latest information updates on vaccination drives you and your family stay safe.\n For any emergency 👇 \n 📞 Helpline: 011-23978046 | Toll-Free Number: 1075 \n ✉ Email: ncov2019@gov.in \n\n Please enter one of the following option 👇 \n *A*. Get list of states. \n *B*. Get list of districts. \n *C*.Get vaccination sessions by PIN. \n *D*. Get vaccination sessions by district. \n *E*. Coronavirus cases in *Italy*. \n *F*. How does it *Spread*? \n *G*. *Preventive measures* to be taken.'
         msg.body(text)
         responded = True
     
-    if 'A' in incoming_msg:
+    if 'a' in incoming_msg:
         # return total cases
         r = requests.get('https://cdn-api.co-vin.in/api/v2/admin/location/states')
         if r.status_code == 200:
@@ -40,7 +40,7 @@ def bot():
         msg.body(text)
         responded = True
 
-    if 'C' in incoming_msg:
+    if 'c' in incoming_msg:
         # return total cases
         txt = f'Enter your PIN:'
         msg.body(txt)
