@@ -25,7 +25,7 @@ def bot():
     if 'hi' in incoming_msg or 'hey' in incoming_msg or 'heya' in incoming_msg or 'menu' in incoming_msg:
         text = f'Hello Fella!, \nThis is a Covid-Bot developed by Pritindra Das to provide latest information updates on vaccination drives you and your family stay safe.\n For any emergency 👇 \n 📞 Helpline: 011-23978046 | Toll-Free Number: 1075 \n ✉ Email: ncov2019@gov.in \n\n Please enter one of the following option 👇 \n *A*. Get list of states. \n *B*. Get list of districts. \n *C*.Get vaccination sessions by PIN. \n *D*. Get vaccination sessions by district. \n *E*. Coronavirus cases in *Italy*. \n *F*. How does it *Spread*? \n *G*. *Preventive measures* to be taken.'
         msg.body(text)
-        responded = True
+        responded = False
     
     if 'a' in incoming_msg:
         # return total cases
