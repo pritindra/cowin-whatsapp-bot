@@ -30,7 +30,7 @@ def bot():
     
     if 'a' in incoming_msg:
         # return total cases
-        r = requests.get('https://cdn-api.co-vin.in/api/v2/admin/location/states')
+        r = requests.get('https://cdn-api.co-vin.in/api/v2/admin/location/states',headers=headers_dict)
         if r.status_code == 200:
             data = r.json()
             # text = f'_List of States_ \n\nState id : *{data["state_id"]}* \n\nState name : *{data["state_name"]}* \n\n 👉 Type *B, C, D, E, F, G* to see other options \n 👉 Type *Menu* to view the Main Menu'
